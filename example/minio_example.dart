@@ -62,7 +62,7 @@ void main() async {
   });
 
   final stat = await minio.statObject(bucket, object);
-  print('--- object stat:');
+  print('--- object stat:'); 
   print(stat.etag);
   print(stat.size);
   print(stat.lastModified);
