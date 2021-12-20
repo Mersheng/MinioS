@@ -129,14 +129,14 @@ Map<String, String> prependXAMZMeta(Map<String, String?> metadata,
         !isSupportedHeader(key) &&
         !isStorageclassHeader(key)) {
       if (key == 'x-amz-security-token') {
-        break;
+        continue;
       }
       newMetadata['x-amz-meta-' + key] = newMetadata[key]!;
       newMetadata.remove(key);
     }
   }
   if (token != null && !metadata.containsKey('x-amz-security-token')) {
-    metadata.putIfAbsent('x-amz-security-token', () => token);
+    newMetadata.putIfAbsent('x-amz-security-token', () => token);
   }
   return newMetadata;
 }
